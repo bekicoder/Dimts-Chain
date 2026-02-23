@@ -21,7 +21,7 @@ export default function Home() {
       constituency: "Addis Ababa – Arada District",
       totalVotes: "120,450",
       votePercent: "30.8%",
-      seatsWon: 0,
+      seatsWon: 0, 
       status: "Result Finalized",
       reporting: "100% Precincts",
       leader: "Mr. Freedom Leader",
