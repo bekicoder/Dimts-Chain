@@ -3,12 +3,11 @@ import { Home, Vote, Wallet, BarChart3,Menu,X } from "lucide-react";
 import {useState} from "react"
 export default function Sidebar() {
     const [opend,setOpend] = useState<boolean>(false)
-
     function handleOpen() {
          
     }                        
   return (
-      <div className="bg-red-500 h-screen md:w-64 w-fit ">
+      <div className="bg-red-500 md:h-screen md:w-64 w-fit z-1000">
     <aside className="fixed top-0 w-screeen h-fit flex w-screen md:h-screen md:w-64 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-white flex md:flex-col border-r border-gray-800 shadow-xl">
          <div className="flex items-center font-bold">
     <div className={`w-12 h-12 bg-[url(/light_mode_ballot.png)]`}></div>
@@ -46,7 +45,7 @@ export default function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/voting"
+          to="/register"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
               isActive
@@ -56,7 +55,7 @@ export default function Sidebar() {
           }
         >
           <Vote size={18} />
-          Vote
+         Register
         </NavLink>
 
         <NavLink
@@ -83,7 +82,7 @@ export default function Sidebar() {
       </div>
       </div>
 
-      <button className="ml-auto cursor-pointer px-3 md:hidden" onClick={()=>setOpend(!opend)}>
+      <button className="ml-auto cursor-pointer px-3 md:hidden mr-2" onClick={()=>setOpend(!opend)}>
       <Menu size={20}/>
       </button>
     </aside>

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Navbar from "./pages/Navbar"
+import Register from "./pages/Register"
 import Sidebar from "./pages/Sidebar"
 import Home from "./pages/Home"
 import Graph from "./pages/Graph"
@@ -14,12 +14,9 @@ export default function App() {
     
     <Routes>
      <Route path="/" element={<Home/>} />
-      <Route
-        path="/results"
-        element={<Graph/>}
-      />
-   </Routes>
-    
+    <Route path="/results" element={<Graph/>} />
+   <Route path="/register" element={<Register/>} />
+    </Routes>
       </div>
   );
 }

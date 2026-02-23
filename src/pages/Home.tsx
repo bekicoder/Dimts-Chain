@@ -51,7 +51,6 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Cards Grid */}
       <div className="flex flex-wrap gap-6">
         {partyData.map((party, idx) => (
           <div
