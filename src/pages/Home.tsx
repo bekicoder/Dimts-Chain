@@ -1,3 +1,4 @@
+import {useState} from "react"
 export default function Home() {
   // Example Ethiopian parties and candidate info
   const partyData = [
@@ -42,6 +43,7 @@ export default function Home() {
     },
   ];
 
+  const [opend,setOpend]  = useState(false)
   return (
     <div className="flex-1 p-6 bg-gray-50">
       <div className="text-center mb-8">
@@ -50,7 +52,16 @@ export default function Home() {
           Ethiopian National Election Party and Candidate Information
         </p>
       </div>
-
+      <div className="w-screen flex flex-coll justify-center p-14 items-center h-screen bg-black/50 z-20000 fixed top-0 left-0">
+      <div className="bg-white w-full gap-3 h-54 rounded-xl flex py-7 flex-col items-center">
+      <strong>Confirim to vote</strong>
+      <p className="text-center mb-4">Are you sure you want to cast your vote? This action cannot be undone</p>
+      <div className="mt-auto h-fit flex justify-center gap-5">
+      <button className="px-2 py-1 bg-red-500 rounded-full">Go Back</button>
+      <button className="px-2 py-1 border border-green-500 rounded-full">Confirim</button>
+      </div>
+      </div>
+      </div>
       <div className="flex flex-wrap gap-6">
         {partyData.map((party, idx) => (
           <div
