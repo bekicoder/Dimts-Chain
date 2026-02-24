@@ -130,23 +130,23 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-3 gap-4 text-center">
-            <div className="p-4 rounded-xl bg-zinc-100 dark:bg-zinc-800">
+            <div className="pt-4 px-1 rounded-xl bg-zinc-100 dark:bg-zinc-800">
               <p className="text-xs text-zinc-500">Total Votes</p>
-              <p className="text-lg font-bold">
+              <p className="md:text-lg font-medium md:font-bold">
                 {party.totalVotes}
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-zinc-100 dark:bg-zinc-800">
               <p className="text-xs text-zinc-500">Vote %</p>
-              <p className="text-lg font-bold">
+              <p className="md:text-lg font-medium md:font-bold">
                 {party.votePercent}
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-zinc-100 dark:bg-zinc-800">
               <p className="text-xs text-zinc-500">Seats</p>
-              <p className="text-lg font-bold">
+              <p className="md:text-lg font-medium md:font-bold">
                 {party.seatsWon}
               </p>
             </div>
