@@ -2,13 +2,20 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --background-image-background: url('/light_mode_ballot.png');
+  --background-image-ballot: url('/light_mode_ballot.png');
     --color-foreground:black;
-}
+    --color-border: var(--color-gray-100);
+    --color-muted:var(--color-gray-500);
+    --color-charcoal:var(--color-gray-800);
+    --background-image-background:linear-gradient(to bottom right, var(--color-gray-950), var(--color-purple-900), var(--color-gray-950));
+   }
 
 @layer theme {
   .dark {
-    --background-image-background: url('/dark_mode_ballot.png');
-    --color-primary-foreground:white;
-  }
+    --background-image-ballot: url('/dark_mode_ballot.png');
+    --color-foreground:white;
+    --color-border: var(--color-zinc-700); 
+    --color-muted:var(--color-gray-300);
+    --color-charcoal:var(--color-gray-800);
+ }
 }

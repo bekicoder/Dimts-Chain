@@ -9,7 +9,7 @@ export default function App() {
   const [hasVoted, setHasVoted] = useState(false);
 
   return (
-      <div className="flex flex-col md:flex-row pt-16 md:pt-0">
+      <div className="flex flex-col md:flex-row pt-12 md:pt-0">
     <Sidebar/>
     
     <Routes>

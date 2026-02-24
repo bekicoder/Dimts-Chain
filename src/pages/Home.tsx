@@ -43,83 +43,126 @@ export default function Home() {
     },
   ];
 
-  const [opend,setOpend]  = useState(true)
+  const [opend,setOpend]  = useState<boolean>(false)
   function handleClose(option){
       setOpend(false)
       }
   return (
-    <div className="flex-1 p-6 bg-gray-50">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold">Secure Voting DAO</h1>
-        <p className="text-gray-600 mt-2">
-          Ethiopian National Election Party and Candidate Information
+<div className="flex-1 h-screen overflow-auto p-6 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
+  <div className="text-center mb-10">
+    <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+      Secure Voting DAO
+    </h1>
+    <p className="text-zinc-600 dark:text-zinc-400 mt-3">
+      Ethiopian National Election Party and Candidate Information
+    </p>
+  </div>
+
+  {opend && (
+    <div className="w-screen h-screen fixed top-0 left-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm flex justify-center items-center z-50">
+      <div className="w-full max-w-md rounded-2xl p-8 shadow-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
+        <h2 className="text-xl font-semibold text-center text-cyan-600 dark:text-cyan-400">
+          Confirm Your Vote
+        </h2>
+
+        <p className="text-center mt-4 text-zinc-600 dark:text-zinc-400">
+          Are you sure you want to cast your vote?
         </p>
-      </div>
 
-      {opend && (<div className="w-screen flex flex-coll justify-center p-14 items-center h-screen bg-black/50 z-20000 fixed top-0 left-0">
-      <div className="bg-white w-full max-w-md h-54 rounded-xl flex py-7 flex-col items-center">
-      <strong>Confirim to vote</strong> 
-      <p className="text-center mt-3 px-2">Are you sure you want to cast your vote?</p>
-      <p className='mb-4'> This action cannot be undone</p>
-      <div className="mt-auto h-fit flex justify-center gap-5">
-      <button className="px-3 py-1 bg-red-500 rounded-full cursor-pointer" onClick={()=>handleClose("cancel")}>Go Back</button>
-      <button className="px-3 py-1 border border-green-500 rounded-full" onClick={()=>handleClose("cancel")}>Confirim</button>
-      </div>
-      </div>
-      </div>
-      )}
-      <div className="flex flex-wrap gap-6">
-        {partyData.map((party, idx) => (
-          <div
-            key={idx}
-            className="min-w-100 max-w-md w-full bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition duration-300"
+        <p className="text-center text-sm text-red-500 mt-2">
+          This action cannot be undone.
+        </p>
+
+        <div className="mt-8 flex justify-center gap-5">
+          <button
+            className="px-5 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+            onClick={() => handleClose("cancel")}
           >
-            <div className="bg-gray-100 p-4">
-              <div className="flex items-center gap-4">
-                <img
-                  src={party.logo}
-                  alt={`${party.partyName} Logo`}
-                  className="w-16 h-16 rounded-full border-4 border-white shadow-md"
-                />
-                <div className="text-gray-800">
-                  <h2 className="text-xl font-bold">{party.partyName}</h2>
-                  <p className="text-sm opacity-90">Officially Registered by NEBE</p>
-                </div>
-              </div>
-            </div>
+            Cancel
+          </button>
 
-            <div className="p-6 space-y-4">
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800">
-                  Candidate: {party.candidate}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  Constituency: {party.constituency}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div className="bg-gray-50 p-3 rounded-xl">
-                  <p className="text-sm text-gray-500">Total Votes</p>
-                  <p className="text-lg font-bold text-gray-800">{party.totalVotes}</p>
-                </div>
-
-                <div className="bg-gray-50 p-3 rounded-xl">
-                  <p className="text-sm text-gray-500">Vote %</p>
-                  <p className="text-lg font-bold text-gray-800">{party.votePercent}</p>
-                </div>
-
-                <div className="bg-gray-50 p-3 rounded-xl">
-                  <p className="text-sm text-gray-500">Seats Won</p>
-                  <p className="text-lg font-bold text-gray-800">{party.seatsWon}</p>
-                </div>
-              </div>
-              <button className="w-full bg-green-500 p-2 rounded-xl text-white font-medium cursor-pointer">Vote</button>
-             </div>
-          </div>
-        ))}
+          <button
+            className="px-5 py-2 rounded-xl font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 transition"
+            onClick={() => handleClose("confirm")}
+          >
+            Confirm Vote
+          </button>
+        </div>
       </div>
     </div>
-  );
+  )}
+
+  <div className="flex flex-wrap gap-8 justify-center">
+    {partyData.map((party, idx) => (
+      <div
+        key={idx}
+        className="min-w-[320px] max-w-md w-full rounded-2xl shadow-lg border transition duration-300
+        bg-white dark:bg-zinc-900
+        border-zinc-200 dark:border-zinc-800
+        hover:shadow-xl hover:border-cyan-500/40"
+      >
+        <div className="p-5 border-b border-zinc-200 dark:border-zinc-800">
+          <div className="flex items-center gap-4">
+            <img
+              src={party.logo}
+              alt={`${party.partyName} Logo`}
+              className="w-16 h-16 rounded-full border border-zinc-300 dark:border-zinc-700"
+            />
+            <div>
+              <h2 className="text-lg font-semibold text-cyan-600 dark:text-cyan-400">
+                {party.partyName}
+              </h2>
+              <p className="text-xs text-zinc-500 dark:text-zinc-500">
+                Officially Registered by NEBE
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-6 space-y-6">
+          <div>
+            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
+              {party.candidate}
+            </h3>
+            <p className="text-sm text-zinc-600 dark:text-zinc-500">
+              {party.constituency}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 text-center">
+            <div className="p-4 rounded-xl bg-zinc-100 dark:bg-zinc-800">
+              <p className="text-xs text-zinc-500">Total Votes</p>
+              <p className="text-lg font-bold">
+                {party.totalVotes}
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-zinc-100 dark:bg-zinc-800">
+              <p className="text-xs text-zinc-500">Vote %</p>
+              <p className="text-lg font-bold">
+                {party.votePercent}
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-zinc-100 dark:bg-zinc-800">
+              <p className="text-xs text-zinc-500">Seats</p>
+              <p className="text-lg font-bold">
+                {party.seatsWon}
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => handleOpen(party)}
+            className="w-full py-3 rounded-xl font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 transition"
+          >
+            Cast Vote
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+      );
 }
 
