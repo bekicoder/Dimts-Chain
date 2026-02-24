@@ -44,6 +44,9 @@ export default function Home() {
   ];
 
   const [opend,setOpend]  = useState(true)
+  function handleClose(option){
+      setOpend(false)
+      }
   return (
     <div className="flex-1 p-6 bg-gray-50">
       <div className="text-center mb-8">
@@ -54,12 +57,13 @@ export default function Home() {
       </div>
 
       {opend && (<div className="w-screen flex flex-coll justify-center p-14 items-center h-screen bg-black/50 z-20000 fixed top-0 left-0">
-      <div className="bg-white w-full gap-3 h-54 rounded-xl flex py-7 flex-col items-center">
-      <strong>Confirim to vote</strong>
-      <p className="text-center mb-4">Are you sure you want to cast your vote? This action cannot be undone</p>
+      <div className="bg-white w-full max-w-md h-54 rounded-xl flex py-7 flex-col items-center">
+      <strong>Confirim to vote</strong> 
+      <p className="text-center mt-3 px-2">Are you sure you want to cast your vote?</p>
+      <p className='mb-4'> This action cannot be undone</p>
       <div className="mt-auto h-fit flex justify-center gap-5">
-      <button className="px-2 py-1 bg-red-500 rounded-full cursor-pointer" onClick={()=>setOpend(false)}>Go Back</button>
-      <button className="px-2 py-1 border border-green-500 rounded-full">Confirim</button>
+      <button className="px-3 py-1 bg-red-500 rounded-full cursor-pointer" onClick={()=>handleClose("cancel")}>Go Back</button>
+      <button className="px-3 py-1 border border-green-500 rounded-full" onClick={()=>handleClose("cancel")}>Confirim</button>
       </div>
       </div>
       </div>
@@ -70,7 +74,6 @@ export default function Home() {
             key={idx}
             className="min-w-100 max-w-md w-full bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition duration-300"
           >
-            {/* Header Section without gradient */}
             <div className="bg-gray-100 p-4">
               <div className="flex items-center gap-4">
                 <img
@@ -85,7 +88,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Candidate Info */}
             <div className="p-6 space-y-4">
               <div>
                 <h3 className="text-lg font-semibold text-gray-800">
@@ -96,7 +98,6 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Election Results */}
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div className="bg-gray-50 p-3 rounded-xl">
                   <p className="text-sm text-gray-500">Total Votes</p>
@@ -114,7 +115,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Status Badge */}
               <div className="flex justify-between items-center pt-2">
                 <span className="px-3 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">
                   {party.status}
@@ -125,7 +125,6 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Footer Info */}
               <div className="border-t pt-4 text-sm text-gray-600 space-y-1">
                 <p>Party Leader: {party.leader}</p>
                 <p>Election Cycle: {party.electionCycle}</p>
