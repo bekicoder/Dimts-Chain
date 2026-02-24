@@ -44,7 +44,7 @@ export default function Home() {
   ];
 
   const [opend,setOpend]  = useState(true)
-  function handleClose(option){
+  function handleClose(option:string){
       setOpend(false)
       }
   return (

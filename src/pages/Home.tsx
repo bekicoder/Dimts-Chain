@@ -44,7 +44,7 @@ export default function Home() {
   ];
 
   const [opend,setOpend]  = useState<boolean>(false)
-  function handleClose(option){
+  function handleClose(option:string){
       setOpend(false)
       }
   return (
@@ -83,7 +83,7 @@ export default function Home() {
 
           <button
             className="px-5 py-2 rounded-xl font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 transition"
-            onClick={() => handleClose("confirm")}
+            onClick={()  => handleClose("confirm")}
           >
             Confirm Vote
           </button>
@@ -153,7 +153,7 @@ export default function Home() {
           </div>
 
           <button
-            onClick={() => handleOpen(party)}
+            onClick={() => handleClose(party)}
             className="w-full py-3 rounded-xl font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 transition"
           >
             Cast Vote

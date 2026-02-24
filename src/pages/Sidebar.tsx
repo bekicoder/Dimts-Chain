@@ -7,7 +7,7 @@ export default function Sidebar() {
     function handleOpen() {
          
     }             
-    function handleToggle(theme){
+    function handleToggle(theme:string){
         const tempTheme = theme
         if(theme == "default"){
         const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
