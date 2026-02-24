@@ -1,17 +1,16 @@
 import { NavLink } from "react-router-dom";
-import { Home, Vote, Wallet, BarChart3,Menu,X,Sun,Moon,SunDim,MoonStar,Eclipse,Monitor } from "lucide-react";
+import { Home, Vote, Wallet, BarChart3,Menu,X,Moon,SunDim,Monitor } from "lucide-react";
 import {useState,useEffect} from "react"
 export default function Sidebar() {
     const [opend,setOpend] = useState<boolean>(false)
     const [mode,setMode] = useState<string>("")
-    function handleOpen() {
-         
-    }             
+                 
     function handleToggle(theme:string){
         const tempTheme = theme
         if(theme == "default"){
         const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
         isDarkMode ? theme = "dark" : "light" 
+        console.log(isDarkMode,"this is the theme")
         }
         const root = window.document.documentElement
         root.classList.remove("light")

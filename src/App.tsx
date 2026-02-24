@@ -1,13 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
 import Register from "./pages/Register"
 import Sidebar from "./pages/Sidebar"
 import Home from "./pages/Home"
 import Graph from "./pages/Graph"
-import ExampleLineChart from "./pages/Rechart"
 export default function App() {
-  const  [user, setUser] = useState(null);
-  const [hasVoted, setHasVoted] = useState(false);
 
   return (
       <div className="flex flex-col md:flex-row pt-12 md:pt-0">

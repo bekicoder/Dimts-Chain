@@ -44,8 +44,10 @@ export default function Home() {
   ];
 
   const [opend,setOpend]  = useState<boolean>(false)
-  function handleClose(option:string){
+  function handleClose(option:boolean){
+     if(!option){
       setOpend(false)
+      }
       }
   return (
 <div className="flex-1 h-screen overflow-auto p-6 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
@@ -76,14 +78,14 @@ export default function Home() {
         <div className="mt-8 flex justify-center gap-5">
           <button
             className="px-5 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
-            onClick={() => handleClose("cancel")}
+            onClick={() => handleClose(false)}
           >
             Cancel
           </button>
 
           <button
             className="px-5 py-2 rounded-xl font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 transition"
-            onClick={()  => handleClose("confirm")}
+            onClick={()  => handleClose(true)}
           >
             Confirm Vote
           </button>
@@ -153,7 +155,6 @@ export default function Home() {
           </div>
 
           <button
-            onClick={() => handleClose(party)}
             className="w-full py-3 rounded-xl font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 transition"
           >
             Cast Vote
