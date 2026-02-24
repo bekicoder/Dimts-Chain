@@ -114,22 +114,8 @@ export default function Home() {
                   <p className="text-lg font-bold text-gray-800">{party.seatsWon}</p>
                 </div>
               </div>
-
-              <div className="flex justify-between items-center pt-2">
-                <span className="px-3 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">
-                  {party.status}
-                </span>
-
-                <span className="text-xs text-gray-400">
-                  Reporting: {party.reporting}
-                </span>
-              </div>
-
-              <div className="border-t pt-4 text-sm text-gray-600 space-y-1">
-                <p>Party Leader: {party.leader}</p>
-                <p>Election Cycle: {party.electionCycle}</p>
-              </div>
-            </div>
+              <button className="w-full bg-green-500 p-2 rounded-xl text-white font-medium cursor-pointer">Vote</button>
+             </div>
           </div>
         ))}
       </div>

@@ -28,7 +28,7 @@ export default function Graph() {
                 <div className="w-full gap-5 h-full border-l border-b px-4 flex items-end">
             {data.map(party=>{
             return (
-            <div className={`h-[${party.rate}%] w-[10%] bg-blue-500 relative flex items-center justify-center`}>
+            <div className={`h-[${party.rate}%] w-[10%] text-white bg-blue-500 relative flex items-center justify-center`}>
             <img  className="rounded-full w-full scale-75 aspect-squere absolute block bottom-[100%] bg-red-400" src={`${party.img}`}/>
             <span className="">{party.rate}%</span>
             <p className="absolute top-full">{party.shortName}</p>
