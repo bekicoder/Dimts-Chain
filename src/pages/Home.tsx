@@ -50,7 +50,7 @@ export default function Home() {
   return (
 <div className="flex-1 h-screen overflow-auto p-6 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
   <div className="text-center mb-10">
-    <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+    <h1 className="text-4xl leading-normal font-bold tracking-tight bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
       Secure Voting DAO
     </h1>
     <p className="text-zinc-600 dark:text-zinc-400 mt-3">

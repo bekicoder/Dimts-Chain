@@ -4,6 +4,7 @@ import Register from "./pages/Register"
 import Sidebar from "./pages/Sidebar"
 import Home from "./pages/Home"
 import Graph from "./pages/Graph"
+import ExampleLineChart from "./pages/Rechart"
 export default function App() {
   const  [user, setUser] = useState(null);
   const [hasVoted, setHasVoted] = useState(false);
@@ -11,7 +12,6 @@ export default function App() {
   return (
       <div className="flex flex-col md:flex-row pt-12 md:pt-0">
     <Sidebar/>
-    
     <Routes>
      <Route path="/" element={<Home/>} />
     <Route path="/results" element={<Graph/>} />

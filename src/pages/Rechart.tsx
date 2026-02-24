@@ -49,15 +49,15 @@ const data = [
 
 const ExampleLineChart = () => {
   return (
-      <div className="w-full flex justify-center items-center md:p-20 pt-12 md:bg-gray-50 dark:bg-zinc-950 h-screen">
-      <div className="w-full dark:md:bg-zinc-900 py-12 md:rounded-2xl shadow-lg">
+      <div className="w-full bg-amber-100 ml-12">
+    // ResponsiveContainer makes the chart adjust to its parent's width and height
     <ResponsiveContainer width="100%" height={400}>
       <LineChart
         data={data} // Pass your data to the chart
         margin={{
           top: 5,
           right: 30,
-          left: 10,
+          left: 20,
           bottom: 5,
         }}
       >
@@ -72,7 +72,6 @@ const ExampleLineChart = () => {
         <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
       </LineChart>
     </ResponsiveContainer>
-    </div>
     </div>
   );
 };
