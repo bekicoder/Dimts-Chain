@@ -1,2 +1,14 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --background-image-background: url('/light_mode_ballot.png');
+    --color-foreground:black;
+}
+
+@layer theme {
+  .dark {
+    --background-image-background: url('/dark_mode_ballot.png');
+    --color-primary-foreground:white;
+  }
+}
