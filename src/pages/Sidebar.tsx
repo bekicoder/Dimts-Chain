@@ -4,7 +4,6 @@ import {useState,useEffect} from "react"
 export default function Sidebar() {
     const [opend,setOpend] = useState<boolean>(false)
     const [mode,setMode] = useState<string>("")
-                 
     function handleToggle(theme:string){
         const tempTheme = theme
         if(theme == "default"){
