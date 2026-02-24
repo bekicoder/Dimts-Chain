@@ -10,7 +10,6 @@ export default function Sidebar() {
         if(theme == "default"){
         const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
         isDarkMode ? theme = "dark" : "light" 
-        console.log(isDarkMode,"this is the theme")
         }
         const root = window.document.documentElement
         root.classList.remove("light")
@@ -18,7 +17,6 @@ export default function Sidebar() {
         root.classList.add(theme)
         localStorage.setItem("theme",tempTheme)
         setMode(tempTheme)
-        console.log(tempTheme,theme)
     }
     useEffect(() => {
      let savedTheme = localStorage.getItem("theme") 
@@ -30,11 +28,10 @@ export default function Sidebar() {
      const theme = (savedTheme=="default" || savedTheme=="dark")? "dark" : "light" 
      window.document.documentElement.classList.add(theme)
      setMode(savedTheme)
-     console.log(savedTheme,"this is saved")
     }, [])
     
   return (
-      <div className="md:h-screen md:w-64 w-fit z-1000">
+      <div className="md:h-screen md:w-64 w-[60%] z-1000">
     <aside className="fixed top-0 w-screeen h-fit flex w-screen md:h-screen md:w-64 dark:bg-gradient-to-b dark:from-gray-950 dark:via-gray-900 to-gray-950 bg-gray-50 bg-none text-foreground flex md:flex-col border border-border shadow-lg shadow-gray-200 dark:shadow-gray-800">
          <div className="flex items-center font-bold  bg-cover px-4">
     <div className={`w-12 h-12 bg-ballot bg-cover`}></div>
@@ -58,7 +55,7 @@ export default function Sidebar() {
       <div className="flex justify-between items-center w-full mx-au bg-gray-100 dark:bg-zinc-800 p-2 rounded-2xl shadow-inner">
 
   <button
-    className={`w-10 h-10 flex items-center justify-center rounded-full  
+    className={`w-10 h-10 flex items-center justify-center rounded-full 
                bg-${mode=="dark"?"gray-900 text-white":"zinc-700 text-gray-600"} 
                text-gray-600 dark:text-gray-300 
                border border-gray-300 dark:border-zinc-600
