@@ -1,9 +1,29 @@
 import { NavLink } from "react-router-dom";
+import {ethers} from "ethers"
 import { Home, Vote, Wallet, BarChart3,Menu,X,Moon,SunDim,Monitor } from "lucide-react";
 import {useState,useEffect} from "react"
-export default function Sidebar() {
+    const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    const ABI = ["function getCount() view returns (uint256)"]
+export default function Sidebar({contract,setContract,contractWS,setContractWS}) {
     const [opend,setOpend] = useState<boolean>(false)
     const [mode,setMode] = useState<string>("")
+    const [account,setAccount] = useState()
+    const [provider,setProvider] = useState()
+
+    async function connect_wallet(){
+        if(!window.ethereum){
+            return alert("Install wallet")
+        }
+        const provider = new ethers.BrowserProvider(window.ethereum)
+    await provider.send('eth_requestAccounts',[])
+    const signer = await provider.getSigner()
+    const Contract = new ethers.Contract(CONTRACT_ADDRESS,ABI,provider)
+    setContractWS(await Contract.connect(signer))
+    setContract(Contract)
+    setAccount(await signer.getAddress());
+     }
+
+
     function handleToggle(theme:string){
         const tempTheme = theme
         if(theme == "default"){
@@ -155,9 +175,9 @@ export default function Sidebar() {
 
       {/* Wallet Section */}
       <div className="p-4 border-t border-border mt-auto">
-        <button className="w-full flex items-center text-white justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:bg-purple-700 transition-all py-2 rounded-xl font-medium">
+        <button onClick={connect_wallet} className="w-full flex items-center text-white justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:bg-purple-700 transition-all py-2 rounded-xl font-medium">
           <Wallet size={18} />
-          Connect Wallet
+          {account ? account.substr(0, 4) + "..." + account.substr(-2) : "Connect Wallet"}
         </button>
       </div>
       </div>
