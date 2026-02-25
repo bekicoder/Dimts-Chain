@@ -34,7 +34,7 @@ export default function Sidebar() {
    const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
    useEffect(()=>{
        if(mode=="default"){
-    colorSchemeQuery.addEventListener('change', (event) => {
+    colorSchemeQuery.addEventListener('change', () => {
     handleToggle("default")
 });
        }
