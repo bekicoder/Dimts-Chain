@@ -9,7 +9,8 @@
     --color-charcoal:var(--color-gray-800);
     --background-image-background:linear-gradient(to bottom right, var(--color-gray-950), var(--color-purple-900), var(--color-gray-950));
    }
-
+ @source inline("bg-gray-900");
+ @source inline("bg-zinc-700");
 @layer theme {
   .dark {
     --background-image-ballot: url('/dark_mode_ballot.png');

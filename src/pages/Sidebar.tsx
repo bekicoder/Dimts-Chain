@@ -7,37 +7,51 @@ export default function Sidebar() {
     function handleToggle(theme:string){
         const tempTheme = theme
         if(theme == "default"){
-        const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches        
         isDarkMode ? theme = "dark" : "light" 
         }
-        const root = window.document.documentElement
-        root.classList.remove("light")
-        root.classList.remove("dark")
-        root.classList.add(theme)
-        localStorage.setItem("theme",tempTheme)
-        setMode(tempTheme)
+        const root = window.document.documentElement;
+        root.classList.remove("light");
+        root.classList.remove("dark");
+        root.classList.add(theme);
+        localStorage.setItem("theme",tempTheme);
+        setMode(tempTheme);
     }
     useEffect(() => {
-     let savedTheme = localStorage.getItem("theme") 
+     let savedTheme = localStorage.getItem("theme");
      if(!savedTheme){
         const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
          setMode("default")
-         savedTheme =  isDarkMode ? "dark" : "light"
+         savedTheme =  isDarkMode ? "dark" : "light";
      }
-     const theme = (savedTheme=="default" || savedTheme=="dark")? "dark" : "light" 
-     window.document.documentElement.classList.add(theme)
-     setMode(savedTheme)
+     const theme = (savedTheme=="default" || savedTheme=="dark")? "dark" : "light";
+     window.document.documentElement.classList.add(theme);
+     setMode(savedTheme);
     }, [])
-    
+
+
+
+   const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+   useEffect(()=>{
+       if(mode=="default"){
+    colorSchemeQuery.addEventListener('change', (event) => {
+    handleToggle("default")
+});
+       }
+   },[mode]) 
+
+
+
+
   return (
-      <div className="md:h-screen md:w-64 w-[60%] z-1000">
+      <div className="md:h-screen md:w-64 w-[88%] z-1000 bg-amber-500">
     <aside className="fixed top-0 w-screeen h-fit flex w-screen md:h-screen md:w-64 dark:bg-gradient-to-b dark:from-gray-950 dark:via-gray-900 to-gray-950 bg-gray-50 bg-none text-foreground flex md:flex-col border border-border shadow-lg shadow-gray-200 dark:shadow-gray-800">
          <div className="flex items-center font-bold  bg-cover px-4">
     <div className={`w-12 h-12 bg-ballot bg-cover`}></div>
     DimtsChain
     </div> 
  
-    <div className={`h-full absolute transition-all duration-200 md:translate-x-0  flex w-[60%] flex-col left-ful right-0 dark:bg-gradient-to-b dark:from-gray-950 dark:via-gray-900 bg-none bg-white to-gray-950  h-screen md:right-auto md:relative md:w-full md:px-0 md:bg-white transform  ${opend ? "translate-x-0":"translate-x-full"}`}>
+    <div className={`h-full absolute transition-all duration-200 md:translate-x-0  flex w-[70%] flex-col left-ful right-0 dark:bg-gradient-to-b dark:from-gray-950 dark:via-gray-900 bg-none bg-white to-gray-950  h-screen md:right-auto md:relative md:w-full md:px-0 md:bg-white transform  ${opend ? "translate-x-0":"translate-x-full"}`}>
       <div className="p-6">
         <h1 className="text-2xl font-bold flex bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
           Web3Vote 
@@ -55,7 +69,7 @@ export default function Sidebar() {
 
   <button
     className={`w-10 h-10 flex items-center justify-center rounded-full 
-               bg-${mode=="dark"?"gray-900 text-white":"zinc-700 text-gray-600"} 
+               bg-${mode=="dark"?"gray-900 text-white":"text-gray-600"} 
                text-gray-600 dark:text-gray-300 
                border border-gray-300 dark:border-zinc-600
                transition-all duration-300 ease-out
@@ -68,7 +82,7 @@ export default function Sidebar() {
 
   <button
     className={`w-10 h-10 flex items-center justify-center rounded-full 
-               bg-${mode=="light"?"gray-900 text-white":"white text-gray-600"} dark:bg-zinc-700 
+               bg-${mode=="light"?"gray-900 text-white":"text-gray-600"} 
                text-gray-600 dark:text-gray-300 
                border border-gray-300 dark:border-zinc-600
                transition-all duration-300 ease-out
@@ -82,7 +96,7 @@ export default function Sidebar() {
 
   <button
     className={`w-10 h-10 flex items-center justify-center rounded-full 
-               bg-${mode=="default"?"gray-900 text-white":"zinc-700 text-gray-600"}
+               bg-${mode=="default"?"gray-900 text-white":"text-gray-600"}
                text-gray-600 dark:text-gray-300 
                border border-gray-300 dark:border-zinc-600
                transition-all duration-300 ease-out
