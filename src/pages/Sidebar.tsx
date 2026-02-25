@@ -155,7 +155,7 @@ export default function Sidebar() {
 
       {/* Wallet Section */}
       <div className="p-4 border-t border-border mt-auto">
-        <button className="w-full flex items-center text-white justify-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-700 hover:bg-purple-700 transition-all py-2 rounded-xl font-medium">
+        <button className="w-full flex items-center text-white justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:bg-purple-700 transition-all py-2 rounded-xl font-medium">
           <Wallet size={18} />
           Connect Wallet
         </button>
