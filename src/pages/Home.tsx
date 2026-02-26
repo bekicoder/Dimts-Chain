@@ -1,6 +1,6 @@
 import {useState} from "react"
 import {ethers} from "ethers"
-export default function Home({contract,setContract,contractWS,setContractWS}) {
+export default function Home({contract,contractWS}) {
   const partyData = [
     {
       partyName: "Prosperity Party",

@@ -10,12 +10,13 @@ export default function App() {
         const [contractWS,setContractWS] = useState();
   return (
       <div className="flex flex-col md:flex-row pt-12 md:pt-0">
-    <Sidebar contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>
+    <Sidebar contract={contract} contractWS={contractWS} setContractWS={setContractWS}  setContract={setContract}/>
     <Routes>
-     <Route path="/" element={<Home contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>} />
-    <Route path="/results" element={<Graph contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>} />
-   <Route path="/register" element={<Register contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>} />
-     <Route path="/admin" element={<CreateParty contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>} />
+     <Route path="/" element={<Home contract={contract} contractWS={contractWS}/>} />
+    <Route path="/results" element={<Home contract={contract} contractWS={contractWS} />} />
+   <Route path="/register" element={<Home contract={contract} contractWS={contractWS} />} />
+     <Route path="/admin" element={<Home contract={contract} contractWS={contractWS} />} />
+
     </Routes>
       </div>
   );
