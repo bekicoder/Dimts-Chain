@@ -61,12 +61,6 @@ export default function CreateParty() {
           <InputField label="Leader" name="leader" value={formData.leader} onChange={handleChange}/>
           <InputField label="Candidate" name="candidate" value={formData.candidate} onChange={handleChange}/>
           <InputField label="Constituency" name="constituency" value={formData.constituency} onChange={handleChange}/>
-          <InputField label="Total Votes" name="totalVotes" value={formData.totalVotes} onChange={handleChange}/>
-          <InputField label="Vote Percent" name="votePercent" value={formData.votePercent} onChange={handleChange}/>
-          <InputField label="Seats Won" name="seatsWon" value={formData.seatsWon} onChange={handleChange}/>
-          <InputField label="Reporting" name="reporting" value={formData.reporting} onChange={handleChange}/>
-          <InputField label="Status" name="status" value={formData.status} onChange={handleChange}/>
-          <InputField label="Election Cycle" name="electionCycle" value={formData.electionCycle} onChange={handleChange}/>
 
           {/* Logo Upload Full Width */}
           <div className="md:col-span-2">
@@ -130,7 +124,7 @@ function InputField({ label, name, value, onChange }) {
         name={name}
         value={value}
         onChange={onChange}
-        required
+        requirede 
         className="w-full px-4 py-3 rounded-xl
           bg-gray-50 dark:bg-[#0f172a]
           border border-gray-300 dark:border-gray-600
