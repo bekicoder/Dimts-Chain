@@ -60,9 +60,6 @@ export default function Sidebar({contract,setContract,contractWS,setContractWS})
        }
    },[mode]) 
 
-
-
-
   return (
       <div className="md:h-screen md:w-64 w-[88%] z-1000 bg-amber-500">
     <aside className="fixed top-0 w-screeen h-fit flex w-screen md:h-screen md:w-64 dark:bg-gradient-to-b dark:from-gray-950 dark:via-gray-900 to-gray-950 bg-gray-50 bg-none text-foreground flex md:flex-col border border-border shadow-lg shadow-gray-200 dark:shadow-gray-800">
@@ -175,7 +172,7 @@ export default function Sidebar({contract,setContract,contractWS,setContractWS})
 
       {/* Wallet Section */}
       <div className="p-4 border-t border-border mt-auto">
-        <button onClick={connect_wallet} className="w-full flex items-center text-white justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:bg-purple-700 transition-all py-2 rounded-xl font-medium">
+        <button onClick={connect_wallet} className="w-full flex items-center text-white justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 cursor-pointer transition-all py-2 rounded-xl font-medium">
           <Wallet size={18} />
           {account ? account.substr(0, 4) + "..." + account.substr(-2) : "Connect Wallet"}
         </button>

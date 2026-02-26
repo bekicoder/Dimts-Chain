@@ -51,7 +51,7 @@ export default function CreateParty() {
         border-indigo-100 dark:border-gray-700">
 
         <h1 className="text-3xl font-bold text-center mb-8
-          text-indigo-700 dark:text-indigo-400">
+          bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
           Political Party Registration
         </h1>
 
@@ -76,9 +76,8 @@ export default function CreateParty() {
               className="w-full text-sm
                 file:mr-4 file:py-2 file:px-4
                 file:rounded-xl file:border-0
-                file:bg-indigo-600 file:text-white
-                hover:file:bg-indigo-700
-                dark:file:bg-indigo-500 dark:hover:file:bg-indigo-600"
+                file:bg-gradient-to-r file:from-cyan-500 file:to-blue-600 file:cursor-pointer file:hover:opacity-90 file:transition file:text-white
+                "
             />
 
             {formData.logo && (
@@ -95,9 +94,7 @@ export default function CreateParty() {
             <button
               type="submit"
               className="w-full py-3 rounded-xl
-                bg-indigo-600 hover:bg-indigo-700
-                dark:bg-indigo-500 dark:hover:bg-indigo-600
-                text-white font-semibold text-lg
+                bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 transition                text-white font-semibold text-lg
                 transition duration-300 shadow-lg">
               Submit Registration
             </button>
