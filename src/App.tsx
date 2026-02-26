@@ -4,6 +4,7 @@ import Register from "./pages/Register"
 import Sidebar from "./pages/Sidebar"
 import Home from "./pages/Home"
 import Graph from "./pages/Graph"
+import CreateParty from "./pages/Admin"
 export default function App() {
         const [contract,setContract] = useState();
         const [contractWS,setContractWS] = useState();
@@ -11,9 +12,10 @@ export default function App() {
       <div className="flex flex-col md:flex-row pt-12 md:pt-0">
     <Sidebar contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>
     <Routes>
-     <Route path="/" element={<Home/>} />
-    <Route path="/results" element={<Graph/>} />
-   <Route path="/register" element={<Register/>} />
+     <Route path="/" element={<Home contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>} />
+    <Route path="/results" element={<Graph contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>} />
+   <Route path="/register" element={<Register contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>} />
+     <Route path="/admin" element={<CreateParty contract={contract} contractWS={contractWS} setContract={setContractWS}  setContract={setContract}/>} />
     </Routes>
       </div>
   );

@@ -1,20 +1,6 @@
 import {useState} from "react"
 import {ethers} from "ethers"
-export default function Home() {
-    const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
-    const [account,setAccount] = useState()
-    const [contract,setContract] = useState()
-    async function connet_wallet(){
-        if(window.ehthereum){
-            alert("please install wallet")
-        }
-        const provider = new ethers.BrowserProvider(window.ethereum)
-        await provider.send("eth_requestAccounts",[])
-        const signer = await provider.getSigner()
-        const contractInstant = new ethers.Contract(ABI,CONTRACT_ADDRESS,signer)
-        setAccount(await signer.getSigner())
-
-    }
+export default function Home({contract,setContract,contractWS,setContractWS}) {
   const partyData = [
     {
       partyName: "Prosperity Party",
@@ -58,11 +44,14 @@ export default function Home() {
   ];
 
   const [opend,setOpend]  = useState<boolean>(false)
+  
   function handleClose(option:boolean){
      if(!option){
       setOpend(false)
       }
       }
+
+
   return (
 <div className="flex-1 h-screen overflow-auto p-6 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
   <div className="text-center mb-10">
