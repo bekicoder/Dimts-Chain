@@ -15,7 +15,7 @@ export default function App() {
      <Route path="/" element={<Home contract={contract} contractWS={contractWS}/>} />
     <Route path="/results" element={<Home contract={contract} contractWS={contractWS} />} />
    <Route path="/register" element={<Home contract={contract} contractWS={contractWS} />} />
-     <Route path="/admin" element={<Home contract={contract} contractWS={contractWS} />} />
+     <Route path="/admin" element={<CreateParty contract={contract} contractWS={contractWS} />} />
 
     </Routes>
       </div>

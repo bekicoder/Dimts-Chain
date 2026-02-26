@@ -1,18 +1,22 @@
 import { useState,useEffect } from "react";
+import uploadToIPFS from "/script/IPFS"
+import uploadImage from "/script/test"
+
+type formDT= {
+      partyName:string;
+      logo:string;
+      candidate:string;
+      leader:string;
+      constituency:string;
+  }
 
 export default function CreateParty() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<formDT>({
     partyName: "",
     logo: "",
     candidate: "",
-    constituency: "",
-    totalVotes: "",
-    votePercent: "",
-    seatsWon: "",
-    status: "",
-    reporting: "",
     leader: "",
-    electionCycle: "",
+    constituency:""
   });
 
   const handleChange = (e) => {
@@ -37,12 +41,22 @@ export default function CreateParty() {
     reader.readAsDataURL(file);
   };
  
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const isValid = Object.values(formData).every(d=>d.trim()!="")
+    if(isValid){
+        const res =await uploadToIPFS(formData)
+        console.log(res)
+    }
     console.log("Final Object:", formData);
   };
+
+  useEffect(async()={
+        const resT = await uploadImage(formData.logo)
+        console.log(resT)
+  },[formData.logo])
    return (
-    <div className="min-h-screen flex items-center justify-center
+    <div className="h-screen overflow-y-auto py- flex items-center justify-center
       bg-gradient-to-br from-indigo-50 via-white to-blue-100
       dark:from-[#0f172a] dark:via-[#111827] dark:to-[#1e293b] w-full md:p-20">
 
@@ -51,7 +65,7 @@ export default function CreateParty() {
         border-indigo-100 dark:border-gray-700">
 
         <h1 className="text-3xl font-bold text-center mb-8
-          bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+          bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent leading-normal">
           Political Party Registration
         </h1>
 
@@ -132,3 +146,5 @@ function InputField({ label, name, value, onChange }) {
     </div>
   );
 }
+
+export {formDT} 

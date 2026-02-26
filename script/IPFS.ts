@@ -1,11 +1,13 @@
-export async function uploadToIPFS(file, name, description) {
-  if (!file || !name || !description) {
+import {formDT} from "/src/pages/Admin"
+export default async function uploadToIPFS({logo,candidate,partyName,constituency,leader}) {
+  if (!logo||!candidate||partyName,!constituency,!leader) {
     throw new Error("file, name, and description are required");
   }
 
+  try{
   // ---------- 1️⃣ Upload the image ----------
   const formDataImage = new FormData();
-  formDataImage.append("file", file);
+  formDataImage.append("file", logo);
 
   const resImage = await fetch("http://127.0.0.1:5001/api/v0/add", {
     method: "POST",
@@ -20,8 +22,10 @@ export async function uploadToIPFS(file, name, description) {
 
   // ---------- 2️⃣ Build metadata JSON ----------
   const metadata = {
-    name,
-    description,
+    partyName,
+    candidate,
+    constituency,
+    leader,
     image: `ipfs://${imageCID}`
   };
 
@@ -49,5 +53,9 @@ export async function uploadToIPFS(file, name, description) {
     metadataCID,
     metadataJSON: metadata
   };
+
+  }catch(err){
+      throw new Error(err)
+  }
 }
 
