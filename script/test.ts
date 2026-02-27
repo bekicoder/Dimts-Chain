@@ -3,19 +3,22 @@ import { create } from 'ipfs-http-client';
 // 1. Initialize the client to your local node
 const client = create({ host: '127.0.0.1', port: 5001, protocol: 'http' });
 
-async function uploadImage(file) {
+async function uploadImage({logo,candidate,partyName,constituency,leader}) {
+    if(!logo||logo==0||!candidate||!partyName||!constituency||!leader){ throw new Error("logo,candidate,partyName,constituency and leader are required")}
+    console.log("It is valid")
   try {
-    // 2. Upload the file
-    const added = await client.add(file);
-    
-    // 3. Construct the local gateway URL
-    const url = `http://localhost:8080/ipfs/${added.path}`;
-    
-    console.log("Success! CID:", added.path);
-    console.log("View locally at:", url);
-    return url;
+    const added = await client.add(logo);
+    const metadata = JSON.stringify({
+    partyName,
+    candidate,
+    constituency,
+    leader,
+    logo: `ipfs://${added.path}`
+  })
+    const {cid} = await client.add(metadata)
+    return cid.toString();
   } catch (error) {
     console.error("Error uploading to local IPFS:", error);
   }
 }
-
+export {uploadImage}

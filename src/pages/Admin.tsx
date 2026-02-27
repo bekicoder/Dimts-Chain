@@ -1,24 +1,23 @@
 import { useState,useEffect } from "react";
 import uploadToIPFS from "/script/IPFS"
-import uploadImage from "/script/test"
 
 type formDT= {
       partyName:string;
-      logo:string;
+      logo:File | null;
       candidate:string;
       leader:string;
       constituency:string;
   }
 
-export default function CreateParty() {
+export default function CreateParty({contract,contractWS}) {
   const [formData, setFormData] = useState<formDT>({
     partyName: "",
-    logo: "",
+    logo:null, 
     candidate: "",
     leader: "",
-    constituency:""
+    constituency:"",
   });
-
+  const [logoPreview,setPreview] = useState<string>("")
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -30,32 +29,29 @@ export default function CreateParty() {
   const handleLogoUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
+    setFormData((prev) => ({
+        ...prev,
+        logo:file,
+      }));
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFormData((prev) => ({
-        ...prev,
-        logo: reader.result,
-      }));
+        setPreview(reader.result)
     };
     reader.readAsDataURL(file);
   };
  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const isValid = Object.values(formData).every(d=>d.trim()!="")
-    if(isValid){
+    try{
         const res =await uploadToIPFS(formData)
         console.log(res)
+        const res_ = await contractWS.add(formData.partyName,res)   
+    }catch(err){
+        console.error(err)
     }
-    console.log("Final Object:", formData);
   };
 
-  useEffect(async()={
-        const resT = await uploadImage(formData.logo)
-        console.log(resT)
-  },[formData.logo])
-   return (
+     return (
     <div className="h-screen overflow-y-auto py- flex items-center justify-center
       bg-gradient-to-br from-indigo-50 via-white to-blue-100
       dark:from-[#0f172a] dark:via-[#111827] dark:to-[#1e293b] w-full md:p-20">
@@ -96,7 +92,7 @@ export default function CreateParty() {
 
             {formData.logo && (
               <img
-                src={formData.logo}
+                src={logoPreview}
                 alt="Preview"
                 className="mt-4 h-24 rounded-xl border border-gray-300 dark:border-gray-600"
               />
@@ -135,7 +131,7 @@ function InputField({ label, name, value, onChange }) {
         name={name}
         value={value}
         onChange={onChange}
-        requirede 
+        required={true}
         className="w-full px-4 py-3 rounded-xl
           bg-gray-50 dark:bg-[#0f172a]
           border border-gray-300 dark:border-gray-600

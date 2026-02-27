@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/Bekam/web3/vite-project/contracts/RegisterParties.sol": {
-      "lastModificationDate": 1772103956254,
-      "contentHash": "7a81bbb742a66f69b47627f34375f99c",
+      "lastModificationDate": 1772149481488,
+      "contentHash": "91ae37b5550eb7279e56666efa6ec6bd",
       "sourceName": "contracts/RegisterParties.sol",
       "solcConfig": {
         "version": "0.8.28",

@@ -3,28 +3,21 @@
 pragma solidity ^0.8.28;
 
 contract RegisterParties{
-   address payable public owner;
+   address payable public immutable owner;
+   uint public totallVotes;
    constructor(){
            owner = payable(msg.sender);
    }
-
-   struct parties{
-      string partyName;
-      string logo;
-      string candidate;
-      string constituency;
-      string status;
-      string reporting;
-      string leader;
-      string electionCycle;
+   
+   struct Parties_{
       uint totalVotes;
-      uint votePercent;
       uint seatsWon;
+      string MetaData;
    } 
-   mapping(string=>parties) Parties;
-
-   function add(parties memory data) public returns(bool){
+   mapping(string=>Parties_) Parties;
+   event AddedParty(string indexed partyName);
+   function add(string calldata name,string calldata url) external{
        require(owner==msg.sender,"Only the owner can add");
-       Parties[data.partyName] = data;
+       Parties[name].MetaData = url;
    }
 }

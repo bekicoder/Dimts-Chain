@@ -13,8 +13,8 @@ export default function App() {
     <Sidebar contract={contract} contractWS={contractWS} setContractWS={setContractWS}  setContract={setContract}/>
     <Routes>
      <Route path="/" element={<Home contract={contract} contractWS={contractWS}/>} />
-    <Route path="/results" element={<Home contract={contract} contractWS={contractWS} />} />
-   <Route path="/register" element={<Home contract={contract} contractWS={contractWS} />} />
+    <Route path="/results" element={<Graph contract={contract} contractWS={contractWS} />} />
+   <Route path="/register" element={<Register contract={contract} contractWS={contractWS} />} />
      <Route path="/admin" element={<CreateParty contract={contract} contractWS={contractWS} />} />
 
     </Routes>

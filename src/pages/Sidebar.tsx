@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import {ethers} from "ethers"
 import { Home, Vote, Wallet, BarChart3,Menu,X,Moon,SunDim,Monitor } from "lucide-react";
 import {useState,useEffect} from "react"
-    const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
-    const ABI = ["function getCount() view returns (uint256)"]
+    const CONTRACT_ADDRESS = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+    const ABI = ["function add(string calldata name,string calldata url)"]
 export default function Sidebar({contract,setContract,contractWS,setContractWS}) {
     const [opend,setOpend] = useState<boolean>(false)
     const [mode,setMode] = useState<string>("")
